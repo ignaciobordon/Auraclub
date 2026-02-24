@@ -179,16 +179,20 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background 0.5s ease, padding 0.4s ease;
+  background: rgba(45, 43, 40, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 nav.scrolled {
-  background: rgba(45, 43, 40, 0.95);
-  backdrop-filter: blur(12px);
+  background: rgba(45, 43, 40, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 1rem 2rem;
 }
 .nav-logo {
@@ -214,6 +218,26 @@ nav.scrolled {
 .nav-cta:hover {
   background: var(--aura-gold);
   color: var(--aura-charcoal);
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav-links a {
+  font-family: 'Geologica', sans-serif;
+  font-weight: 400;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--aura-sand);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--aura-gold);
 }
 
 /* ============================================
@@ -1111,7 +1135,22 @@ footer::before {
    ============================================ */
 @media (max-width: 768px) {
   nav {
-    padding: 1.2rem 1.25rem;
+    padding: 1.6rem 1.5rem;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+  }
+
+  .nav-cta {
+    font-size: 0.72rem;
+    padding: 0.75rem 1.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .nav-links {
+    display: none;
   }
 
   .concepto-grid {
@@ -1193,6 +1232,15 @@ footer::before {
     display: none;
   }
 
+  .nav-links {
+    gap: 1.2rem;
+  }
+
+  .nav-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+  }
+
   .timeline-item {
     grid-template-columns: 40px 1fr;
     gap: 0 1rem;
@@ -1211,6 +1259,11 @@ footer::before {
      ============================================ -->
 <nav id="navbar">
   <a href="#" class="nav-logo">AURA CLUB</a>
+  <div class="nav-links">
+    <a href="https://instagram.com/auraclub.ar" target="_blank" rel="noopener">@auraclub.ar</a>
+    <a href="https://instagram.com/eltemplomdp" target="_blank" rel="noopener">El Templo</a>
+    <a href="mailto:Contacto.eltemplomdp@gmail.com">Contacto</a>
+  </div>
   <a href="#registro" class="nav-cta"><span>Reservar</span></a>
 </nav>
 
@@ -1529,11 +1582,11 @@ footer::before {
   <div class="footer-logo">AURA CLUB</div>
   <div class="footer-tagline">Paso a paso, piedra por piedra.</div>
 
-  <nav class="footer-links">
+  <div class="footer-links">
     <a href="https://instagram.com/auraclub.ar" target="_blank" rel="noopener">@auraclub.ar</a>
     <a href="https://instagram.com/eltemplomdp" target="_blank" rel="noopener">El Templo</a>
     <a href="mailto:Contacto.eltemplomdp@gmail.com">Contacto</a>
-  </nav>
+  </div>
 
   <div class="footer-sep"></div>
 
