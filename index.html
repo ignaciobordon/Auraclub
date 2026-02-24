@@ -1674,7 +1674,8 @@ document.getElementById('waitlist-form').addEventListener('submit', function(e) 
 
   const nombre = document.getElementById('nombre').value.trim();
   const email = document.getElementById('email').value.trim();
-  const ciudad = document.getElementById('ciudad').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const dni = document.getElementById('dni').value.trim();
 
   const SHEETS_URL = 'https://script.google.com/macros/s/AKfycby7Gm1MfHk_T4bOks74tqyChTpfs8cI0wSNnEPjhtScqzMU8cD26ddSm-v-3juHi405rg/exec';
 
@@ -1687,8 +1688,6 @@ document.getElementById('waitlist-form').addEventListener('submit', function(e) 
   }).catch(function() {});
 
   // 2. Abrir WhatsApp con datos pre-cargados
-  const telefono = document.getElementById('telefono').value.trim();
-  const dni = document.getElementById('dni').value.trim();
   const mensaje = 'Hola! Me quiero registrar para AURA CLUB ' + String.fromCodePoint(0x1F31F) + '\n\n*Nombre:* ' + nombre + '\n*Email:* ' + email + '\n*Tel\u00e9fono:* ' + telefono + '\n*DNI:* ' + dni + '\n\nQuiero acceso early bird para la primera edici\u00f3n en Mar del Plata.';
   const whatsappNumber = '5492236974897';
   const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(mensaje);
