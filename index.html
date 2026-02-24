@@ -1017,6 +1017,18 @@ nav.scrolled {
   background: #b06e4a;
 }
 
+.form-age-notice {
+  font-family: 'Geologica', sans-serif;
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--aura-olive);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
 .form-micro {
   font-family: 'Geologica', sans-serif;
   font-weight: 300;
@@ -1559,14 +1571,18 @@ footer::before {
 
       <form id="waitlist-form" class="reveal reveal-delay-3">
         <div class="form-group">
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="given-name">
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellido" required autocomplete="name">
         </div>
         <div class="form-group">
-          <input type="email" id="email" name="email" placeholder="Tu email" required autocomplete="email">
+          <input type="email" id="email" name="email" placeholder="Mail" required autocomplete="email">
         </div>
         <div class="form-group">
-          <input type="text" id="ciudad" name="ciudad" placeholder="Tu ciudad" autocomplete="address-level2">
+          <input type="tel" id="telefono" name="telefono" placeholder="Número de teléfono" required autocomplete="tel">
         </div>
+        <div class="form-group">
+          <input type="text" id="dni" name="dni" placeholder="DNI" required>
+        </div>
+        <p class="form-age-notice">Evento exclusivo para mayores de 18 años</p>
         <button type="submit" class="form-submit">QUIERO ENTRAR</button>
         <p class="form-micro">Registrate y sé el primero en acceder a precios early bird y novedades de la primera edición.</p>
       </form>
@@ -1660,18 +1676,20 @@ document.getElementById('waitlist-form').addEventListener('submit', function(e) 
   const email = document.getElementById('email').value.trim();
   const ciudad = document.getElementById('ciudad').value.trim();
 
-  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzAaK_CuC2sTyioEYGJ4m7YhHLUI2VJ2W__TDPBOpuXDE5F5wBgzSvqo7jISVeeTV5lCg/exec';
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycby7Gm1MfHk_T4bOks74tqyChTpfs8cI0wSNnEPjhtScqzMU8cD26ddSm-v-3juHi405rg/exec';
 
   // 1. Guardar en Google Sheets
   fetch(SHEETS_URL, {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nombre, email, ciudad })
+    body: JSON.stringify({ nombre, email, telefono, dni })
   }).catch(function() {});
 
   // 2. Abrir WhatsApp con datos pre-cargados
-  const mensaje = 'Hola! Me quiero registrar para AURA CLUB ' + String.fromCodePoint(0x1F31F) + '\n\n*Nombre:* ' + nombre + '\n*Email:* ' + email + '\n*Ciudad:* ' + (ciudad || 'No especificada') + '\n\nQuiero acceso early bird para la primera edici\u00f3n en Mar del Plata.';
+  const telefono = document.getElementById('telefono').value.trim();
+  const dni = document.getElementById('dni').value.trim();
+  const mensaje = 'Hola! Me quiero registrar para AURA CLUB ' + String.fromCodePoint(0x1F31F) + '\n\n*Nombre:* ' + nombre + '\n*Email:* ' + email + '\n*Tel\u00e9fono:* ' + telefono + '\n*DNI:* ' + dni + '\n\nQuiero acceso early bird para la primera edici\u00f3n en Mar del Plata.';
   const whatsappNumber = '5492236974897';
   const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(mensaje);
 
