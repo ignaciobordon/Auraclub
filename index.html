@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://auraclub.net">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23C4A235' stroke-width='3'/><circle cx='50' cy='50' r='38' fill='none' stroke='%23C4A235' stroke-width='1'/><line x1='50' y1='15' x2='50' y2='85' stroke='%23C4A235' stroke-width='2'/><line x1='15' y1='50' x2='85' y2='50' stroke='%23C4A235' stroke-width='1' opacity='0.5'/><circle cx='50' cy='50' r='6' fill='%23C4A235'/></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g transform='translate(100,100)'><circle cx='0' cy='0' r='85' fill='none' stroke='%23C4A235' stroke-width='6'/><line x1='0' y1='-60' x2='0' y2='-90' stroke='%23C4A235' stroke-width='6'/><polygon points='0,-55 -10,0 0,-10 10,0' fill='%23C4A235'/><circle cx='0' cy='0' r='7' fill='%23C4A235'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -309,7 +309,7 @@ nav.scrolled {
 
 /* SVG Logo Emblem */
 .hero-emblem {
-  width: clamp(80px, 12vw, 130px);
+  width: clamp(110px, 16vw, 180px);
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: fadeUp 1s var(--ease-premium) 0.5s forwards;
@@ -356,8 +356,8 @@ nav.scrolled {
 .hero-location {
   font-family: 'Geologica', sans-serif;
   font-weight: 300;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--aura-olive-soft);
   margin-top: 2rem;
@@ -795,6 +795,116 @@ nav.scrolled {
   margin-bottom: 2rem;
 }
 
+.video-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--aura-charcoal);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--aura-sand);
+  opacity: 0.6;
+}
+.video-placeholder svg {
+  width: 48px;
+  height: 48px;
+  color: var(--aura-gold);
+  opacity: 0.7;
+}
+.video-placeholder p {
+  font-family: 'Geologica', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.video-placeholder span {
+  font-family: 'Geologica', sans-serif;
+  font-size: 0.65rem;
+  opacity: 0.5;
+  margin: 0;
+}
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(45,43,40,0.45);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.video-overlay p {
+  font-family: 'Geologica', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--aura-cream);
+  opacity: 0.8;
+}
+.video-play-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid var(--aura-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aura-gold);
+}
+.lugar-video-wrap {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(45,43,40,0.15);
+}
+.lugar-video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.lugar-map {
+  margin-top: 1.5rem;
+}
+.lugar-map-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--aura-sand);
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Geologica', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--aura-charcoal);
+  transition: border-color 0.3s ease, color 0.3s ease;
+  background: var(--aura-warm-white);
+}
+.lugar-map-btn:hover {
+  border-color: var(--aura-gold);
+  color: var(--aura-gold);
+}
+.lugar-map-btn svg {
+  color: var(--aura-terracotta);
+  flex-shrink: 0;
+}
+.lugar-map-btn span {
+  margin-left: auto;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aura-gold);
+  opacity: 0.8;
+}
 .lugar-tag {
   font-family: 'Geologica', sans-serif;
   font-weight: 300;
@@ -1275,7 +1385,7 @@ footer::before {
      NAV
      ============================================ -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">AURA CLUB</a>
+  <a href="#" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 154" width="48" height="28" style="display:inline-block;vertical-align:middle;margin-right:0.6rem;" fill="#FAF7F2"><path d="M174.3 22.3c-6.7 2.3-12.5 4.5-12.8 4.9-.4.4 1.2 1.6 3.5 2.8l4.2 2.1-5.4 3.8C160.9 38 150.6 45.2 141 52s-18.9 13.3-20.6 14.6c-2.7 2-3.2 3.1-3.8 8.2-1 9.2-8.9 19.9-21.8 29.9-5.7 4.4-15.4 9.3-18.4 9.3-5.8 0-10.1-6.6-9.1-13.9l.5-3.6-1.5 3.5c-3.9 8.8-2.4 17.1 4 21.1 2.6 1.7 4.4 2 10.2 1.6 8.7-.5 18.4-5.2 32.5-15.7 12.1-9 20.1-13 26-13h4.5l11.4-19.3c6.3-10.5 13.7-22.9 16.4-27.5 2.7-4.5 5.1-8.2 5.3-8.2s1.6 1.8 3 4c1.5 2.2 2.8 3.9 3 3.7.3-.2 6.4-27.5 6.4-28.4 0-.8-3.4.2-14.7 4m-32.2 47c-5.6 9.1-6.1 11.4-3.6 17.4.8 2 1.4 3.8 1.2 4s-1.8-.4-3.6-1.3c-3.6-1.8-9-1.3-12.8 1.2-1.3.8-3.5 2.2-4.9 3.1-2.6 1.7-2.6 1.6.5-2.8 4.3-6 5-10.8 2.2-15.4-1.1-2-2.1-3.8-2.1-4.1 0-.2 1.6.3 3.6 1.1s4.8 1.5 6.3 1.5c2.6 0 12.4-5 13.6-7 .3-.5.9-1 1.1-1 .3 0-.3 1.5-1.5 3.3"/><path d="M113.1 21.5c-14.9 4.2-30.3 16.5-37.3 30-5.3 10.1-7.1 17.4-7.1 28.5-.1 7.9.4 10.9 2.7 17.6C73 102 75 106.7 76 108l1.8 2.4 4.2-1.9c2.2-1 4.3-2.2 4.5-2.6.3-.4-.6-2.7-2-5.1-2.9-5.2-6.5-18.4-6.5-23.9 0-6.6 2.9-18.2 6.3-24.9 4.5-9 15.1-19.5 24.5-24.2 9.6-4.8 16.4-6.1 29.1-5.6 7.5.4 9.8.2 8-.5-4.3-1.7-26.7-1.9-32.8-.2"/><path d="M123 27.6c-10 2.1-18.3 6.9-25.9 15-7.8 8.1-12.7 18.3-13.6 28l-.5 5.9 1.8-6c4.2-13.8 12.6-24.1 24.6-30.1 11.8-5.8 25.5-6.6 37-2.3l4.9 1.8 4.3-3c2.4-1.6 4.4-3.4 4.4-3.8 0-1.3-9.6-4.9-15.9-6.1-7.1-1.3-13.2-1.2-21.1.6m50.8 23c-1.6 2.5-2.8 5-2.8 5.5s1.1 2.7 2.5 4.8c6.4 10.3 8.9 25.8 6 37.6-5.6 22.7-22.5 38.3-45.7 42.3-8.5 1.4-10.1 1.4-17.3 0-4.4-.8-8.1-1.4-8.3-1.3-.2.2 2.1 1.1 5 2.1 4.1 1.5 8.1 1.9 17.3 1.8 10.6 0 12.9-.4 19.5-2.9 13-4.8 22.2-11.7 29.4-21.9 14-19.9 14.4-46.2 1-67.4-1.9-2.8-3.5-5.2-3.6-5.2-.2 0-1.5 2.1-3 4.6"/><path d="M173.8 94.8c-3.7 12.6-14.1 23.9-27.1 29.5-6.6 2.9-8 3.2-18.2 3.1-9 0-12-.4-16.7-2.3-3.2-1.2-6.1-2.7-6.4-3.3-.4-.6.4-2 1.8-3.2 6.8-6 5.8-6.5-2.7-1.2-4.9 3.1-10 5.9-11.2 6.2-3 .8-2.9 1.6.4 4.1 10.8 7.9 27.3 11.6 40 8.9 21.1-4.4 36.9-19.7 41.3-39.7 1.7-7.8.9-9.2-1.2-2.1"/></svg>AURA CLUB</a>
   <div class="nav-links">
     <a href="https://instagram.com/auraclub.ar" target="_blank" rel="noopener">@auraclub.ar</a>
     <a href="https://instagram.com/eltemplomdp" target="_blank" rel="noopener">El Templo</a>
@@ -1291,35 +1401,11 @@ footer::before {
   <div class="hero-bg"></div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">El Templo Calistenia presenta</p>
+    <p class="hero-eyebrow">El Templo Calistenia presenta &nbsp;·&nbsp; 1ª Edición</p>
 
     <!-- SVG Emblem -->
     <div class="hero-emblem">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Outer circle -->
-        <circle cx="60" cy="60" r="56" stroke="#C4A235" stroke-width="1.5" opacity="0.6"/>
-        <!-- Greek key outer ring segments (simplified) -->
-        <circle cx="60" cy="60" r="50" stroke="#C4A235" stroke-width="0.75" opacity="0.3"/>
-        <!-- Inner circle -->
-        <circle cx="60" cy="60" r="42" stroke="#C4A235" stroke-width="1" opacity="0.5"/>
-        <!-- Sun rays -->
-        <line x1="60" y1="18" x2="60" y2="32" stroke="#C4A235" stroke-width="1.5" opacity="0.8"/>
-        <line x1="60" y1="88" x2="60" y2="102" stroke="#C4A235" stroke-width="1.5" opacity="0.8"/>
-        <line x1="18" y1="60" x2="32" y2="60" stroke="#C4A235" stroke-width="1.5" opacity="0.8"/>
-        <line x1="88" y1="60" x2="102" y2="60" stroke="#C4A235" stroke-width="1.5" opacity="0.8"/>
-        <line x1="29.4" y1="29.4" x2="39.4" y2="39.4" stroke="#C4A235" stroke-width="1" opacity="0.5"/>
-        <line x1="80.6" y1="80.6" x2="90.6" y2="90.6" stroke="#C4A235" stroke-width="1" opacity="0.5"/>
-        <line x1="90.6" y1="29.4" x2="80.6" y2="39.4" stroke="#C4A235" stroke-width="1" opacity="0.5"/>
-        <line x1="39.4" y1="80.6" x2="29.4" y2="90.6" stroke="#C4A235" stroke-width="1" opacity="0.5"/>
-        <!-- Center sun -->
-        <circle cx="60" cy="60" r="10" stroke="#C4A235" stroke-width="1.5" fill="none"/>
-        <circle cx="60" cy="60" r="4" fill="#C4A235" opacity="0.8"/>
-        <!-- Vertical axis (elevation) -->
-        <line x1="60" y1="34" x2="60" y2="50" stroke="#C4A235" stroke-width="1" opacity="0.6"/>
-        <line x1="60" y1="70" x2="60" y2="86" stroke="#C4A235" stroke-width="1" opacity="0.6"/>
-        <!-- Arrow up suggestion -->
-        <polyline points="56,37 60,32 64,37" stroke="#C4A235" stroke-width="1" fill="none" opacity="0.7"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 154" fill="#C4A235"><path d="M174.3 22.3c-6.7 2.3-12.5 4.5-12.8 4.9-.4.4 1.2 1.6 3.5 2.8l4.2 2.1-5.4 3.8C160.9 38 150.6 45.2 141 52s-18.9 13.3-20.6 14.6c-2.7 2-3.2 3.1-3.8 8.2-1 9.2-8.9 19.9-21.8 29.9-5.7 4.4-15.4 9.3-18.4 9.3-5.8 0-10.1-6.6-9.1-13.9l.5-3.6-1.5 3.5c-3.9 8.8-2.4 17.1 4 21.1 2.6 1.7 4.4 2 10.2 1.6 8.7-.5 18.4-5.2 32.5-15.7 12.1-9 20.1-13 26-13h4.5l11.4-19.3c6.3-10.5 13.7-22.9 16.4-27.5 2.7-4.5 5.1-8.2 5.3-8.2s1.6 1.8 3 4c1.5 2.2 2.8 3.9 3 3.7.3-.2 6.4-27.5 6.4-28.4 0-.8-3.4.2-14.7 4m-32.2 47c-5.6 9.1-6.1 11.4-3.6 17.4.8 2 1.4 3.8 1.2 4s-1.8-.4-3.6-1.3c-3.6-1.8-9-1.3-12.8 1.2-1.3.8-3.5 2.2-4.9 3.1-2.6 1.7-2.6 1.6.5-2.8 4.3-6 5-10.8 2.2-15.4-1.1-2-2.1-3.8-2.1-4.1 0-.2 1.6.3 3.6 1.1s4.8 1.5 6.3 1.5c2.6 0 12.4-5 13.6-7 .3-.5.9-1 1.1-1 .3 0-.3 1.5-1.5 3.3"/><path d="M113.1 21.5c-14.9 4.2-30.3 16.5-37.3 30-5.3 10.1-7.1 17.4-7.1 28.5-.1 7.9.4 10.9 2.7 17.6C73 102 75 106.7 76 108l1.8 2.4 4.2-1.9c2.2-1 4.3-2.2 4.5-2.6.3-.4-.6-2.7-2-5.1-2.9-5.2-6.5-18.4-6.5-23.9 0-6.6 2.9-18.2 6.3-24.9 4.5-9 15.1-19.5 24.5-24.2 9.6-4.8 16.4-6.1 29.1-5.6 7.5.4 9.8.2 8-.5-4.3-1.7-26.7-1.9-32.8-.2"/><path d="M123 27.6c-10 2.1-18.3 6.9-25.9 15-7.8 8.1-12.7 18.3-13.6 28l-.5 5.9 1.8-6c4.2-13.8 12.6-24.1 24.6-30.1 11.8-5.8 25.5-6.6 37-2.3l4.9 1.8 4.3-3c2.4-1.6 4.4-3.4 4.4-3.8 0-1.3-9.6-4.9-15.9-6.1-7.1-1.3-13.2-1.2-21.1.6m50.8 23c-1.6 2.5-2.8 5-2.8 5.5s1.1 2.7 2.5 4.8c6.4 10.3 8.9 25.8 6 37.6-5.6 22.7-22.5 38.3-45.7 42.3-8.5 1.4-10.1 1.4-17.3 0-4.4-.8-8.1-1.4-8.3-1.3-.2.2 2.1 1.1 5 2.1 4.1 1.5 8.1 1.9 17.3 1.8 10.6 0 12.9-.4 19.5-2.9 13-4.8 22.2-11.7 29.4-21.9 14-19.9 14.4-46.2 1-67.4-1.9-2.8-3.5-5.2-3.6-5.2-.2 0-1.5 2.1-3 4.6"/><path d="M173.8 94.8c-3.7 12.6-14.1 23.9-27.1 29.5-6.6 2.9-8 3.2-18.2 3.1-9 0-12-.4-16.7-2.3-3.2-1.2-6.1-2.7-6.4-3.3-.4-.6.4-2 1.8-3.2 6.8-6 5.8-6.5-2.7-1.2-4.9 3.1-10 5.9-11.2 6.2-3 .8-2.9 1.6.4 4.1 10.8 7.9 27.3 11.6 40 8.9 21.1-4.4 36.9-19.7 41.3-39.7 1.7-7.8.9-9.2-1.2-2.1"/></svg>
     </div>
 
     <h1 class="hero-title">AURA <span>CLUB</span></h1>
@@ -1328,7 +1414,7 @@ footer::before {
 
     <p class="hero-sub">Un día donde el cuerpo se mueve, la mente se expande y la comunidad se encuentra.</p>
 
-    <p class="hero-location">Sierra de los Padres &nbsp;·&nbsp; Mar del Plata &nbsp;·&nbsp; 2026</p>
+    <p class="hero-location">8 de Marzo &nbsp;·&nbsp; Sierra de los Padres &nbsp;·&nbsp; Mar del Plata</p>
 
     <a href="#registro" class="hero-cta"><span>RESERVAR MI LUGAR</span></a>
   </div>
@@ -1502,13 +1588,16 @@ footer::before {
 
     <div class="lugar-grid">
       <div class="lugar-visual reveal">
-        <div class="lugar-placeholder-content">
-          <svg viewBox="0 0 48 48" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 40l8-12 6 8 6-10 10 14"/>
-            <circle cx="34" cy="14" r="5"/>
-            <rect x="4" y="4" width="40" height="40" rx="2"/>
-          </svg>
-          <p>Foto del venue</p>
+        <div class="lugar-video-wrap">
+          <video
+            src="https://res.cloudinary.com/dxrmweij8/video/upload/IMG_4155_jear2o.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            controls
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+          </video>
         </div>
       </div>
 
@@ -1517,7 +1606,17 @@ footer::before {
         <h2 class="section-title reveal reveal-delay-1">LA CASUALIDAD, SIERRA DE LOS PADRES</h2>
         <p class="section-sub reveal reveal-delay-2">Naturaleza, sierras y pileta.</p>
         <p class="section-body reveal reveal-delay-3">Rodeado de sierra y a minutos de Mar del Plata, La Casualidad es el escenario que Aura Club necesitaba. Naturaleza, pileta, espacios abiertos y la calma de estar lejos de todo — pero con todo lo que importa adentro.</p>
-        <p class="lugar-tag reveal reveal-delay-4">Sierra de los Padres · Mar del Plata · Argentina<br>A 20 minutos del centro</p>
+        <p class="lugar-tag reveal reveal-delay-4">8 de Marzo 2026 &nbsp;·&nbsp; Sierra de los Padres · Mar del Plata<br>A 20 minutos del centro</p>
+        <div class="lugar-map reveal reveal-delay-5">
+          <a href="https://maps.app.goo.gl/z5vnEJAiNpKCF3517" target="_blank" rel="noopener" class="lugar-map-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            La Casualidad · Sierra de los Padres
+            <span>Ver en Google Maps →</span>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -1536,8 +1635,8 @@ footer::before {
 
       <div class="stats-row">
         <div class="stat-item reveal">
-          <span class="stat-number" data-target="8">0</span>
-          <span class="stat-label">Sedes en Argentina</span>
+          <span class="stat-number" data-target="7">0</span>
+          <span class="stat-label">Sedes</span>
         </div>
         <div class="stat-item reveal reveal-delay-1">
           <span class="stat-number" data-target="2">0</span>
