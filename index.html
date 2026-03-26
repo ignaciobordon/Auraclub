@@ -14,11 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
-/* ============================================
-   CSS VARIABLES — AURA CLUB IDENTITY SYSTEM
-   ============================================ */
 :root {
   --aura-warm-white: #FAF7F2;
   --aura-charcoal: #2D2B28;
@@ -34,1567 +30,309 @@
   --aura-olive-soft: #A3A88F;
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-/* ============================================
-   RESET & BASE
-   ============================================ */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background: var(--aura-warm-white);
-  color: var(--aura-charcoal);
-  font-family: 'Geologica', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background: var(--aura-warm-white); color: var(--aura-charcoal); font-family: 'Geologica', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
 img { display: block; width: 100%; }
-
-/* ============================================
-   GREEK KEY PATTERN (SVG inline)
-   ============================================ */
-.greek-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0 2rem;
-  opacity: 0.25;
-}
-.greek-divider::before,
-.greek-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--aura-gold));
-}
-.greek-divider::after {
-  background: linear-gradient(90deg, var(--aura-gold), transparent);
-}
-.greek-diamond {
-  color: var(--aura-gold);
-  font-size: 0.6rem;
-  letter-spacing: 0.4em;
-}
-
-.gold-line {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--aura-gold) 30%, var(--aura-gold) 70%, transparent);
-  opacity: 0.2;
-}
-
-/* ============================================
-   SCROLL ANIMATIONS
-   ============================================ */
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+ 
+.gold-line { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--aura-gold) 30%, var(--aura-gold) 70%, transparent); opacity: 0.2; }
+ 
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
-
-/* ============================================
-   SECTION BASE
-   ============================================ */
-.section-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.eyebrow {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--aura-terracotta);
-  margin-bottom: 1.2rem;
-}
-
-.eyebrow--gold {
-  color: var(--aura-gold);
-}
-
-.section-title {
-  font-family: 'Cinzel', serif;
-  font-weight: 500;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  letter-spacing: 0.06em;
-  color: var(--aura-charcoal);
-  line-height: 1.2;
-  margin-bottom: 1.2rem;
-}
-
-.section-title--light {
-  color: var(--aura-warm-white);
-}
-
-.section-title--gold {
-  color: var(--aura-gold);
-}
-
-.section-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  color: var(--aura-charcoal-soft);
-  line-height: 1.6;
-}
-
-.section-body {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--aura-charcoal-soft);
-}
-
-/* ============================================
-   NAV
-   ============================================ */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.5s ease, padding 0.4s ease;
-  background: rgba(45, 43, 40, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-nav.scrolled {
-  background: rgba(45, 43, 40, 0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 1rem 2rem;
-}
-.nav-logo {
-  font-family: 'Cinzel', serif;
-  font-weight: 500;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  color: var(--aura-warm-white);
-  text-decoration: none;
-}
-.nav-cta {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--aura-gold);
-  text-decoration: none;
-  border: 1px solid var(--aura-gold);
-  padding: 0.55rem 1.2rem;
-  transition: all 0.4s var(--ease-premium);
-}
-.nav-cta:hover {
-  background: var(--aura-gold);
-  color: var(--aura-charcoal);
-}
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-.nav-links a {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--aura-sand);
-  text-decoration: none;
-  opacity: 0.85;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
-.nav-links a:hover {
-  opacity: 1;
-  color: var(--aura-gold);
-}
-
-/* ============================================
-   SECTION 1 — HERO
-   ============================================ */
-#hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 6rem 2rem 4rem;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 40% 30%, rgba(196, 162, 53, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 70%, rgba(196, 128, 90, 0.08) 0%, transparent 50%),
-    linear-gradient(160deg, #2D2B28 0%, #1a1916 50%, #2D2B28 100%);
-}
-
-/* Subtle texture overlay */
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-/* Greek key border top */
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--aura-gold), transparent);
-  opacity: 0.6;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-}
-
-.hero-eyebrow {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 500;
-  font-size: 0.65rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--aura-terracotta-soft);
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeUp 1s var(--ease-premium) 0.2s forwards;
-}
-
-/* SVG Logo Emblem */
-.hero-emblem {
-  width: clamp(110px, 16vw, 180px);
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  animation: fadeUp 1s var(--ease-premium) 0.5s forwards;
-}
-
-.hero-title {
-  font-family: 'Cinzel', serif;
-  font-weight: 400;
-  font-size: clamp(3rem, 9vw, 7rem);
-  letter-spacing: 0.12em;
-  color: var(--aura-warm-white);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-  opacity: 0;
-  animation: fadeUp 1.1s var(--ease-premium) 0.7s forwards;
-}
-
-.hero-title span {
-  color: var(--aura-gold);
-}
-
-.hero-line {
-  width: 60px;
-  height: 1px;
-  background: var(--aura-gold);
-  margin: 2rem auto;
-  opacity: 0;
-  animation: expandLine 1s var(--ease-premium) 1s forwards;
-}
-
-.hero-sub {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
-  color: var(--aura-sand);
-  max-width: 540px;
-  line-height: 1.5;
-  margin-bottom: 0;
-  opacity: 0;
-  animation: fadeUp 1s var(--ease-premium) 1.1s forwards;
-}
-
-.hero-location {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.9rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--aura-olive-soft);
-  margin-top: 2rem;
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 1s var(--ease-premium) 1.3s forwards;
-}
-
-.hero-cta {
-  display: inline-block;
-  font-family: 'Geologica', sans-serif;
-  font-weight: 500;
-  font-size: 0.72rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--aura-gold);
-  border: 1px solid var(--aura-gold);
-  padding: 1.1rem 2.8rem;
-  text-decoration: none;
-  transition: all 0.5s var(--ease-premium);
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  animation: fadeUp 1s var(--ease-premium) 1.5s forwards;
-}
-
-.hero-cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--aura-gold);
-  transform: translateX(-101%);
-  transition: transform 0.5s var(--ease-premium);
-}
-
-.hero-cta:hover::before {
-  transform: translateX(0);
-}
-
-.hero-cta span {
-  position: relative;
-  z-index: 1;
-  transition: color 0.5s var(--ease-premium);
-}
-
-.hero-cta:hover span {
-  color: var(--aura-charcoal);
-}
-
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0;
-  animation: fadeIn 1s ease 2.2s forwards;
-  z-index: 2;
-}
-.scroll-indicator span {
-  font-family: 'Geologica', sans-serif;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--aura-olive-soft);
-}
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--aura-gold), transparent);
-  animation: scrollPulse 2s ease infinite;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes expandLine {
-  from { opacity: 0; width: 0; }
-  to { opacity: 1; width: 60px; }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 0.7; }
-}
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.2); }
-}
-
-/* ============================================
-   SECTION 2 — CONCEPTO
-   ============================================ */
-#concepto {
-  padding: 8rem 0;
-  background: var(--aura-warm-white);
-  position: relative;
-}
-
-.concepto-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  margin-top: 4rem;
-}
-
-.concepto-visual {
-  position: relative;
-  aspect-ratio: 4/3;
-  background: var(--aura-cream);
-  overflow: hidden;
-}
-
-.concepto-placeholder {
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(ellipse at 60% 40%, rgba(196, 162, 53, 0.15) 0%, transparent 60%),
-    linear-gradient(160deg, var(--aura-cream) 0%, var(--aura-sand) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.concepto-placeholder-inner {
-  text-align: center;
-  opacity: 0.5;
-}
-
-.concepto-placeholder svg {
-  width: 60px;
-  height: 60px;
-  stroke: var(--aura-gold);
-  margin: 0 auto 1rem;
-}
-
-.concepto-placeholder p {
-  font-family: 'Geologica', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--aura-gold-deep);
-}
-
-/* Decorative corner */
-.concepto-visual::before {
-  content: '';
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
-  border: 1px solid rgba(196, 162, 53, 0.2);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.concepto-text {
-  max-width: 480px;
-}
-
-.concepto-text .section-title {
-  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-  margin-bottom: 2rem;
-}
-
-.concepto-text .section-sub {
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-}
-
-.concepto-text .section-body {
-  margin-bottom: 2rem;
-}
-
-.concepto-pillars {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--aura-cream);
-}
-
-.pillar {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-}
-
-.pillar-icon {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--aura-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.pillar-icon svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--aura-gold);
-  fill: none;
-}
-
-.pillar-title {
-  font-family: 'Cinzel', serif;
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  color: var(--aura-charcoal);
-  margin-bottom: 0.25rem;
-}
-
-.pillar-desc {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.85rem;
-  color: var(--aura-charcoal-soft);
-  line-height: 1.5;
-}
-
-/* ============================================
-   SECTION 3 — EXPERIENCIA
-   ============================================ */
-#experiencia {
-  padding: 8rem 0;
-  background: var(--aura-cream);
-  position: relative;
-}
-
-#experiencia::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--aura-gold), transparent);
-  opacity: 0.3;
-}
-
-.experiencia-header {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto 5rem;
-}
-
-.experiencia-header .section-sub {
-  margin-top: 1rem;
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  position: relative;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 80px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--aura-gold) 10%, var(--aura-terracotta) 90%, transparent);
-  opacity: 0.3;
-}
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 0 2.5rem;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(196, 162, 53, 0.12);
-  position: relative;
-}
-
-.timeline-item:last-child {
-  border-bottom: none;
-}
-
-.timeline-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 4px;
-  position: relative;
-  z-index: 1;
-}
-
-.timeline-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--aura-gold);
-  background: var(--aura-cream);
-  margin-bottom: 0.5rem;
-  transition: background 0.4s ease;
-}
-
-.timeline-item:hover .timeline-dot {
-  background: var(--aura-gold);
-}
-
-/* Progressive color by act */
+ 
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.eyebrow { font-family: 'Geologica', sans-serif; font-weight: 500; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--aura-terracotta); margin-bottom: 1.2rem; }
+.eyebrow--gold { color: var(--aura-gold); }
+.section-title { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.06em; color: var(--aura-charcoal); line-height: 1.2; margin-bottom: 1.2rem; }
+.section-title--light { color: var(--aura-warm-white); }
+.section-sub { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--aura-charcoal-soft); line-height: 1.6; }
+.section-body { font-family: 'Geologica', sans-serif; font-weight: 400; font-size: 1rem; line-height: 1.75; color: var(--aura-charcoal-soft); }
+ 
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.5s ease, padding 0.4s ease; background: rgba(45,43,40,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+nav.scrolled { background: rgba(45,43,40,0.97); padding: 1rem 2rem; }
+.nav-logo { font-family: 'Cinzel', serif; font-weight: 500; font-size: 1rem; letter-spacing: 0.2em; color: var(--aura-warm-white); text-decoration: none; display: flex; align-items: center; }
+.nav-cta { font-family: 'Geologica', sans-serif; font-weight: 500; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--aura-gold); text-decoration: none; border: 1px solid var(--aura-gold); padding: 0.55rem 1.2rem; transition: all 0.4s var(--ease-premium); }
+.nav-cta:hover { background: var(--aura-gold); color: var(--aura-charcoal); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-family: 'Geologica', sans-serif; font-weight: 400; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--aura-sand); text-decoration: none; opacity: 0.85; transition: opacity 0.3s ease, color 0.3s ease; }
+.nav-links a:hover { opacity: 1; color: var(--aura-gold); }
+ 
+/* HERO */
+#hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 4rem; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 40% 30%, rgba(196,162,53,0.12) 0%, transparent 55%), radial-gradient(ellipse at 70% 70%, rgba(196,128,90,0.08) 0%, transparent 50%), linear-gradient(160deg, #2D2B28 0%, #1a1916 50%, #2D2B28 100%); }
+.hero-bg::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--aura-gold), transparent); opacity: 0.6; }
+.hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+.hero-eyebrow { font-family: 'Geologica', sans-serif; font-weight: 500; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--aura-terracotta-soft); margin-bottom: 2rem; opacity: 0; animation: fadeUp 1s var(--ease-premium) 0.2s forwards; }
+.hero-emblem { width: clamp(110px, 16vw, 180px); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s var(--ease-premium) 0.5s forwards; }
+.hero-title { font-family: 'Cinzel', serif; font-weight: 400; font-size: clamp(3rem, 9vw, 7rem); letter-spacing: 0.12em; color: var(--aura-warm-white); line-height: 1; margin-bottom: 0.5rem; opacity: 0; animation: fadeUp 1.1s var(--ease-premium) 0.7s forwards; }
+.hero-title span { color: var(--aura-gold); }
+.hero-line { width: 60px; height: 1px; background: var(--aura-gold); margin: 2rem auto; opacity: 0; animation: expandLine 1s var(--ease-premium) 1s forwards; }
+.hero-sub { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: clamp(1.1rem, 3vw, 1.6rem); color: var(--aura-sand); max-width: 540px; line-height: 1.5; opacity: 0; animation: fadeUp 1s var(--ease-premium) 1.1s forwards; }
+.hero-location { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.9rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--aura-olive-soft); margin-top: 2rem; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 1s var(--ease-premium) 1.3s forwards; }
+.hero-cta { display: inline-block; font-family: 'Geologica', sans-serif; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--aura-gold); border: 1px solid var(--aura-gold); padding: 1.1rem 2.8rem; text-decoration: none; transition: all 0.5s var(--ease-premium); position: relative; overflow: hidden; opacity: 0; animation: fadeUp 1s var(--ease-premium) 1.5s forwards; }
+.hero-cta::before { content: ''; position: absolute; inset: 0; background: var(--aura-gold); transform: translateX(-101%); transition: transform 0.5s var(--ease-premium); }
+.hero-cta:hover::before { transform: translateX(0); }
+.hero-cta span { position: relative; z-index: 1; transition: color 0.5s var(--ease-premium); }
+.hero-cta:hover span { color: var(--aura-charcoal); }
+.scroll-indicator { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeIn 1s ease 2.2s forwards; z-index: 2; }
+.scroll-indicator span { font-family: 'Geologica', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--aura-olive-soft); }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--aura-gold), transparent); animation: scrollPulse 2s ease infinite; }
+ 
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes expandLine { from { opacity: 0; width: 0; } to { opacity: 1; width: 60px; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 0.7; } }
+@keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+ 
+/* CONCEPTO */
+#concepto { padding: 8rem 0; background: var(--aura-warm-white); }
+.concepto-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; margin-top: 4rem; }
+.concepto-visual { position: relative; aspect-ratio: 4/3; background: var(--aura-cream); overflow: hidden; }
+.concepto-visual::before { content: ''; position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px; border: 1px solid rgba(196,162,53,0.2); pointer-events: none; z-index: 1; }
+.concepto-text { max-width: 480px; }
+.concepto-text .section-title { font-size: clamp(1.6rem, 3.5vw, 2.5rem); margin-bottom: 2rem; }
+.concepto-text .section-sub { margin-bottom: 2rem; font-size: 1.2rem; }
+.concepto-text .section-body { margin-bottom: 2rem; }
+.concepto-pillars { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--aura-cream); }
+.pillar { display: flex; align-items: flex-start; gap: 1.2rem; }
+.pillar-icon { width: 36px; height: 36px; border: 1px solid var(--aura-gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.pillar-icon svg { width: 16px; height: 16px; stroke: var(--aura-gold); fill: none; }
+.pillar-title { font-family: 'Cinzel', serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--aura-charcoal); margin-bottom: 0.25rem; }
+.pillar-desc { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.85rem; color: var(--aura-charcoal-soft); line-height: 1.5; }
+ 
+/* EXPERIENCIA */
+#experiencia { padding: 8rem 0; background: var(--aura-cream); position: relative; }
+#experiencia::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--aura-gold), transparent); opacity: 0.3; }
+.experiencia-header { text-align: center; max-width: 600px; margin: 0 auto 5rem; }
+.experiencia-header .section-sub { margin-top: 1rem; }
+.timeline { display: flex; flex-direction: column; position: relative; }
+.timeline::before { content: ''; position: absolute; left: 80px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--aura-gold) 10%, var(--aura-terracotta) 90%, transparent); opacity: 0.3; }
+.timeline-item { display: grid; grid-template-columns: 80px 1fr; gap: 0 2.5rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(196,162,53,0.12); position: relative; }
+.timeline-item:last-child { border-bottom: none; }
+.timeline-marker { display: flex; flex-direction: column; align-items: center; padding-top: 4px; position: relative; z-index: 1; }
+.timeline-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--aura-gold); background: var(--aura-cream); margin-bottom: 0.5rem; transition: background 0.4s ease; }
+.timeline-item:hover .timeline-dot { background: var(--aura-gold); }
 .timeline-item:nth-child(1) .timeline-dot { border-color: var(--aura-olive); }
 .timeline-item:nth-child(2) .timeline-dot { border-color: var(--aura-gold); }
 .timeline-item:nth-child(3) .timeline-dot { border-color: var(--aura-olive-soft); }
 .timeline-item:nth-child(4) .timeline-dot { border-color: var(--aura-terracotta); }
 .timeline-item:nth-child(5) .timeline-dot { border-color: var(--aura-gold-deep); background: var(--aura-gold-deep); }
-
-.timeline-num {
-  font-family: 'Cinzel', serif;
-  font-weight: 400;
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: var(--aura-sand);
-}
-
-.timeline-content {
-  padding-bottom: 0.5rem;
-}
-
-.timeline-label {
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
+.timeline-num { font-family: 'Cinzel', serif; font-weight: 400; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--aura-sand); }
+.timeline-label { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.4rem; }
 .timeline-item:nth-child(1) .timeline-label { color: var(--aura-olive); }
 .timeline-item:nth-child(2) .timeline-label { color: var(--aura-gold); }
 .timeline-item:nth-child(3) .timeline-label { color: var(--aura-olive-soft); }
 .timeline-item:nth-child(4) .timeline-label { color: var(--aura-terracotta); }
 .timeline-item:nth-child(5) .timeline-label { color: var(--aura-gold-deep); }
-
-.timeline-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--aura-charcoal);
-  margin-bottom: 0.6rem;
-}
-
-.timeline-desc {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.9rem;
-  color: var(--aura-charcoal-soft);
-  line-height: 1.6;
-  max-width: 500px;
-}
-
-/* ============================================
-   SECTION 4 — EL LUGAR
-   ============================================ */
-#lugar {
-  padding: 8rem 0;
-  background: var(--aura-warm-white);
-}
-
-.lugar-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.lugar-visual {
-  aspect-ratio: auto;
-  background:
-    radial-gradient(ellipse at 40% 60%, rgba(122, 128, 101, 0.2) 0%, transparent 60%),
-    linear-gradient(135deg, var(--aura-cream) 0%, var(--aura-sand) 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.lugar-visual::before {
-  content: '';
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(196, 162, 53, 0.2);
-  z-index: 1;
-}
-
-.lugar-placeholder-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  opacity: 0.5;
-}
-
-.lugar-placeholder-content svg {
-  width: 48px;
-  height: 48px;
-  stroke: var(--aura-olive);
-  fill: none;
-}
-
-.lugar-placeholder-content p {
-  font-family: 'Geologica', sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--aura-olive);
-}
-
-.lugar-text {
-  max-width: 440px;
-}
-
-.lugar-text .section-sub {
-  margin-bottom: 1.5rem;
-  font-size: 1.15rem;
-}
-
-.lugar-text .section-body {
-  margin-bottom: 2rem;
-}
-
-.video-placeholder {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: var(--aura-charcoal);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  color: var(--aura-sand);
-  opacity: 0.6;
-}
-.video-placeholder svg {
-  width: 48px;
-  height: 48px;
-  color: var(--aura-gold);
-  opacity: 0.7;
-}
-.video-placeholder p {
-  font-family: 'Geologica', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin: 0;
-}
-.video-placeholder span {
-  font-family: 'Geologica', sans-serif;
-  font-size: 0.65rem;
-  opacity: 0.5;
-  margin: 0;
-}
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(45,43,40,0.45);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.video-overlay p {
-  font-family: 'Geologica', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--aura-cream);
-  opacity: 0.8;
-}
-.video-play-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 1.5px solid var(--aura-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--aura-gold);
-}
-.lugar-video-wrap {
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  aspect-ratio: 9/16;
-  position: relative;
-  box-shadow: 0 8px 32px rgba(45,43,40,0.15);
-}
-.lugar-video-wrap iframe {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.lugar-map {
-  margin-top: 1.5rem;
-}
-.lugar-map-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
-  border: 1px solid var(--aura-sand);
-  border-radius: 8px;
-  text-decoration: none;
-  font-family: 'Geologica', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--aura-charcoal);
-  transition: border-color 0.3s ease, color 0.3s ease;
-  background: var(--aura-warm-white);
-}
-.lugar-map-btn:hover {
-  border-color: var(--aura-gold);
-  color: var(--aura-gold);
-}
-.lugar-map-btn svg {
-  color: var(--aura-terracotta);
-  flex-shrink: 0;
-}
-.lugar-map-btn span {
-  margin-left: auto;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--aura-gold);
-  opacity: 0.8;
-}
-.lugar-tag {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--aura-sand);
-  border-top: 1px solid var(--aura-cream);
-  padding-top: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-/* ============================================
-   SECTION 5 — RESPALDO
-   ============================================ */
-#respaldo {
-  padding: 8rem 0;
-  background: var(--aura-charcoal);
-  position: relative;
-  overflow: hidden;
-}
-
-#respaldo::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(ellipse, rgba(196, 162, 53, 0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-#respaldo::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(196, 162, 53, 0.4), transparent);
-}
-
-.respaldo-inner {
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.respaldo-inner .section-sub {
-  color: var(--aura-sand);
-  max-width: 460px;
-  margin: 0 auto 3.5rem;
-}
-
-.stats-row {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  margin: 3rem 0;
-  flex-wrap: wrap;
-}
-
-.stat-item {
-  padding: 2rem 3.5rem;
-  border-right: 1px solid rgba(196, 162, 53, 0.15);
-  text-align: center;
-}
-
-.stat-item:last-child {
-  border-right: none;
-}
-
-.stat-number {
-  font-family: 'Cinzel', serif;
-  font-weight: 500;
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: var(--aura-gold);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.stat-label {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--aura-sand);
-  opacity: 0.7;
-}
-
-.respaldo-body {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.95rem;
-  color: var(--aura-sand);
-  max-width: 420px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.7;
-  opacity: 0.8;
-}
-
-.templo-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  border: 1px solid rgba(196, 162, 53, 0.25);
-  padding: 0.75rem 1.8rem;
-  margin-top: 1rem;
-}
-
-.templo-badge span {
-  font-family: 'Cinzel', serif;
-  font-weight: 400;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: var(--aura-gold);
-}
-
-.templo-badge a {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--aura-sand);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.templo-badge a:hover {
-  opacity: 1;
-}
-
-/* ============================================
-   SECTION 6 — REGISTRO
-   ============================================ */
-#registro {
-  padding: 8rem 0;
-  background: var(--aura-cream);
-  position: relative;
-}
-
-#registro::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--aura-gold), transparent);
-  opacity: 0.3;
-}
-
-.registro-inner {
-  max-width: 560px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.registro-inner .section-title {
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-  margin-bottom: 0.75rem;
-}
-
-.registro-inner .section-sub {
-  margin-bottom: 3rem;
-  font-size: 1.1rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-.form-group input {
-  width: 100%;
-  background: var(--aura-warm-white);
-  border: 1px solid var(--aura-sand);
-  padding: 1rem 1.2rem;
-  font-family: 'Geologica', sans-serif;
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: var(--aura-charcoal);
-  outline: none;
-  transition: border-color 0.3s ease;
-  border-radius: 0;
-  -webkit-appearance: none;
-}
-
-.form-group input::placeholder {
-  color: var(--aura-sand);
-  font-weight: 300;
-}
-
-.form-group input:focus {
-  border-color: var(--aura-gold);
-}
-
-.form-submit {
-  width: 100%;
-  background: var(--aura-terracotta);
-  color: var(--aura-warm-white);
-  border: none;
-  padding: 1.2rem;
-  font-family: 'Geologica', sans-serif;
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.4s var(--ease-premium);
-  margin-top: 0.5rem;
-}
-
-.form-submit:hover {
-  background: #b06e4a;
-}
-
-.form-age-notice {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--aura-olive);
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  opacity: 0.8;
-}
-
-.form-micro {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.78rem;
-  color: var(--aura-charcoal-soft);
-  margin-top: 1.2rem;
-  opacity: 0.7;
-  line-height: 1.5;
-}
-
-.form-success {
-  display: none;
-  padding: 2rem;
-  border: 1px solid rgba(196, 162, 53, 0.3);
-  background: rgba(196, 162, 53, 0.05);
-}
-
-.form-success p {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--aura-charcoal);
-  line-height: 1.6;
-}
-
-.form-success .success-title {
-  font-family: 'Cinzel', serif;
-  font-style: normal;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  color: var(--aura-gold);
-  margin-bottom: 0.75rem;
-}
-
-/* ============================================
-   SECTION 7 — FOOTER
-   ============================================ */
-footer {
-  background: var(--aura-charcoal);
-  padding: 4rem 2rem 2.5rem;
-  text-align: center;
-  position: relative;
-}
-
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(196, 162, 53, 0.4), transparent);
-}
-
-.footer-logo {
-  font-family: 'Cinzel', serif;
-  font-weight: 400;
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
-  color: var(--aura-warm-white);
-  margin-bottom: 0.5rem;
-}
-
-.footer-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--aura-gold);
-  margin-bottom: 2.5rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 400;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--aura-sand);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.3s ease, color 0.3s ease;
-}
-
-.footer-links a:hover {
-  opacity: 1;
-  color: var(--aura-gold);
-}
-
-.footer-sep {
-  width: 40px;
-  height: 1px;
-  background: rgba(196, 162, 53, 0.2);
-  margin: 0 auto 2rem;
-}
-
-.footer-legal {
-  font-family: 'Geologica', sans-serif;
-  font-weight: 300;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--aura-charcoal-soft);
-  opacity: 0.6;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
+.timeline-subtitle { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 1.1rem; color: var(--aura-charcoal); margin-bottom: 0.6rem; }
+.timeline-desc { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.9rem; color: var(--aura-charcoal-soft); line-height: 1.6; max-width: 500px; }
+ 
+/* EL LUGAR */
+#lugar { padding: 8rem 0; background: var(--aura-warm-white); }
+.lugar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.lugar-visual { position: relative; overflow: hidden; }
+.lugar-video-wrap { width: 100%; border-radius: 12px; overflow: hidden; aspect-ratio: 9/16; position: relative; box-shadow: 0 8px 32px rgba(45,43,40,0.15); }
+.lugar-text { max-width: 440px; }
+.lugar-text .section-sub { margin-bottom: 1.5rem; font-size: 1.15rem; }
+.lugar-text .section-body { margin-bottom: 2rem; }
+.lugar-tag { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--aura-sand); border-top: 1px solid var(--aura-cream); padding-top: 1.5rem; margin-top: 0.5rem; }
+.lugar-map { margin-top: 1.5rem; }
+.lugar-map-btn { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.5rem; border: 1px solid var(--aura-sand); border-radius: 8px; text-decoration: none; font-family: 'Geologica', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; color: var(--aura-charcoal); transition: border-color 0.3s ease, color 0.3s ease; background: var(--aura-warm-white); }
+.lugar-map-btn:hover { border-color: var(--aura-gold); color: var(--aura-gold); }
+.lugar-map-btn svg { color: var(--aura-terracotta); flex-shrink: 0; }
+.lugar-map-btn span { margin-left: auto; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aura-gold); opacity: 0.8; }
+ 
+/* RESPALDO */
+#respaldo { padding: 8rem 0; background: var(--aura-charcoal); position: relative; overflow: hidden; }
+#respaldo::before { content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(ellipse, rgba(196,162,53,0.06) 0%, transparent 70%); pointer-events: none; }
+#respaldo::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(196,162,53,0.4), transparent); }
+.respaldo-inner { text-align: center; position: relative; z-index: 1; }
+.respaldo-inner .section-sub { color: var(--aura-sand); max-width: 460px; margin: 0 auto 3.5rem; }
+.stats-row { display: flex; justify-content: center; gap: 0; margin: 3rem 0; flex-wrap: wrap; }
+.stat-item { padding: 2rem 3.5rem; border-right: 1px solid rgba(196,162,53,0.15); text-align: center; }
+.stat-item:last-child { border-right: none; }
+.stat-number { font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(2rem, 5vw, 3rem); color: var(--aura-gold); line-height: 1; margin-bottom: 0.5rem; display: block; }
+.stat-label { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--aura-sand); opacity: 0.7; }
+.respaldo-body { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.95rem; color: var(--aura-sand); max-width: 420px; margin: 0 auto 2.5rem; line-height: 1.7; opacity: 0.8; }
+.templo-badge { display: inline-flex; align-items: center; gap: 0.75rem; border: 1px solid rgba(196,162,53,0.25); padding: 0.75rem 1.8rem; margin-top: 1rem; }
+.templo-badge span { font-family: 'Cinzel', serif; font-weight: 400; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--aura-gold); }
+.templo-badge a { font-family: 'Geologica', sans-serif; font-weight: 400; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--aura-sand); text-decoration: none; opacity: 0.7; transition: opacity 0.3s ease; }
+.templo-badge a:hover { opacity: 1; }
+ 
+/* REGISTRO */
+#registro { padding: 8rem 0; background: var(--aura-cream); position: relative; }
+#registro::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--aura-gold), transparent); opacity: 0.3; }
+.registro-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.registro-inner .section-title { font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 0.75rem; }
+.registro-inner .section-sub { margin-bottom: 3rem; font-size: 1.1rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group input { width: 100%; background: var(--aura-warm-white); border: 1px solid var(--aura-sand); padding: 1rem 1.2rem; font-family: 'Geologica', sans-serif; font-weight: 400; font-size: 0.9rem; color: var(--aura-charcoal); outline: none; transition: border-color 0.3s ease; border-radius: 0; -webkit-appearance: none; }
+.form-group input::placeholder { color: var(--aura-sand); font-weight: 300; }
+.form-group input:focus { border-color: var(--aura-gold); }
+.form-submit { width: 100%; background: var(--aura-terracotta); color: var(--aura-warm-white); border: none; padding: 1.2rem; font-family: 'Geologica', sans-serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; cursor: pointer; transition: background 0.4s var(--ease-premium); margin-top: 0.5rem; }
+.form-submit:hover { background: #b06e4a; }
+.form-micro { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.78rem; color: var(--aura-charcoal-soft); margin-top: 1.2rem; opacity: 0.7; line-height: 1.5; }
+.form-success { display: none; padding: 2rem; border: 1px solid rgba(196,162,53,0.3); background: rgba(196,162,53,0.05); }
+.form-success p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--aura-charcoal); line-height: 1.6; }
+.form-success .success-title { font-family: 'Cinzel', serif; font-style: normal; font-size: 1rem; letter-spacing: 0.1em; color: var(--aura-gold); margin-bottom: 0.75rem; }
+ 
+/* FOOTER */
+footer { background: var(--aura-charcoal); padding: 4rem 2rem 2.5rem; text-align: center; position: relative; }
+footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(196,162,53,0.4), transparent); }
+.footer-logo { font-family: 'Cinzel', serif; font-weight: 400; font-size: 1.4rem; letter-spacing: 0.2em; color: var(--aura-warm-white); margin-bottom: 0.5rem; }
+.footer-tagline { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 1rem; color: var(--aura-gold); margin-bottom: 2.5rem; }
+.footer-links { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+.footer-links a { font-family: 'Geologica', sans-serif; font-weight: 400; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--aura-sand); text-decoration: none; opacity: 0.7; transition: opacity 0.3s ease, color 0.3s ease; }
+.footer-links a:hover { opacity: 1; color: var(--aura-gold); }
+.footer-sep { width: 40px; height: 1px; background: rgba(196,162,53,0.2); margin: 0 auto 2rem; }
+.footer-legal { font-family: 'Geologica', sans-serif; font-weight: 300; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--aura-charcoal-soft); opacity: 0.6; }
+ 
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  nav {
-    padding: 1.6rem 1.5rem;
-  }
-
-  .nav-logo {
-    font-size: 1.1rem;
-    letter-spacing: 0.18em;
-  }
-
-  .nav-cta {
-    font-size: 0.72rem;
-    padding: 0.75rem 1.5rem;
-    letter-spacing: 0.2em;
-  }
-
-  .nav-links {
-    gap: 1rem;
-  }
-
-  .nav-links a {
-    font-size: 0.55rem;
-    letter-spacing: 0.12em;
-  }
-
-  .concepto-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .concepto-visual {
-    aspect-ratio: 4/3;
-    order: -1;
-  }
-
-  .concepto-text {
-    max-width: 100%;
-  }
-
-  .lugar-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .lugar-visual {
-    aspect-ratio: auto;
-  }
-  .lugar-video-wrap {
-    aspect-ratio: 4/5;
-    max-height: 420px;
-  }
-
-  .lugar-text {
-    max-width: 100%;
-  }
-
-  .timeline::before {
-    left: 60px;
-  }
-
-  .timeline-item {
-    grid-template-columns: 60px 1fr;
-    gap: 0 1.5rem;
-    padding: 2rem 0;
-  }
-
-  .stats-row {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .stat-item {
-    padding: 1.5rem 2rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(196, 162, 53, 0.15);
-  }
-
-  .stat-item:last-child {
-    border-bottom: none;
-  }
-
-  #hero {
-    padding: 7rem 1.5rem 5rem;
-  }
-
-  .section-inner {
-    padding: 0 1.25rem;
-  }
-
-  #concepto, #experiencia, #lugar, #respaldo, #registro {
-    padding: 5rem 0;
-  }
+  nav { padding: 1.6rem 1.5rem; }
+  .nav-logo { font-size: 1.1rem; letter-spacing: 0.18em; }
+  .nav-cta { font-size: 0.72rem; padding: 0.75rem 1.5rem; letter-spacing: 0.2em; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.55rem; letter-spacing: 0.12em; }
+  .concepto-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .concepto-visual { aspect-ratio: 4/3; order: -1; }
+  .concepto-text { max-width: 100%; }
+  .lugar-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .lugar-video-wrap { aspect-ratio: 4/5; max-height: 420px; }
+  .lugar-text { max-width: 100%; }
+  .timeline::before { left: 60px; }
+  .timeline-item { grid-template-columns: 60px 1fr; gap: 0 1.5rem; padding: 2rem 0; }
+  .stats-row { flex-direction: column; gap: 0; }
+  .stat-item { padding: 1.5rem 2rem; border-right: none; border-bottom: 1px solid rgba(196,162,53,0.15); }
+  .stat-item:last-child { border-bottom: none; }
+  #hero { padding: 7rem 1.5rem 5rem; }
+  .section-inner { padding: 0 1.25rem; }
+  #concepto, #experiencia, #lugar, #respaldo, #registro { padding: 5rem 0; }
 }
-
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: clamp(2.8rem, 15vw, 4rem);
-    letter-spacing: 0.08em;
-  }
-
-  .nav-cta {
-    display: none;
-  }
-
-  .nav-logo {
-    display: none;
-  }
-
-  .nav-links {
-    gap: 0.6rem;
-  }
-
-  .nav-links a {
-    font-size: 0.48rem;
-    letter-spacing: 0.08em;
-  }
-
-  .timeline-item {
-    grid-template-columns: 40px 1fr;
-    gap: 0 1rem;
-  }
-
-  .timeline::before {
-    left: 44px;
-  }
+  .hero-title { font-size: clamp(2.8rem, 15vw, 4rem); letter-spacing: 0.08em; }
+  .nav-cta { display: none; }
+  .nav-logo { display: none; }
+  .nav-links { gap: 0.6rem; }
+  .nav-links a { font-size: 0.48rem; letter-spacing: 0.08em; }
+  .timeline-item { grid-template-columns: 40px 1fr; gap: 0 1rem; }
+  .timeline::before { left: 44px; }
 }
 </style>
 </head>
 <body>
-
-<!-- ============================================
-     NAV
-     ============================================ -->
+ 
 <nav id="navbar">
-  <a href="#" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 154" width="48" height="28" style="display:inline-block;vertical-align:middle;margin-right:0.6rem;" fill="#FAF7F2"><path d="M174.3 22.3c-6.7 2.3-12.5 4.5-12.8 4.9-.4.4 1.2 1.6 3.5 2.8l4.2 2.1-5.4 3.8C160.9 38 150.6 45.2 141 52s-18.9 13.3-20.6 14.6c-2.7 2-3.2 3.1-3.8 8.2-1 9.2-8.9 19.9-21.8 29.9-5.7 4.4-15.4 9.3-18.4 9.3-5.8 0-10.1-6.6-9.1-13.9l.5-3.6-1.5 3.5c-3.9 8.8-2.4 17.1 4 21.1 2.6 1.7 4.4 2 10.2 1.6 8.7-.5 18.4-5.2 32.5-15.7 12.1-9 20.1-13 26-13h4.5l11.4-19.3c6.3-10.5 13.7-22.9 16.4-27.5 2.7-4.5 5.1-8.2 5.3-8.2s1.6 1.8 3 4c1.5 2.2 2.8 3.9 3 3.7.3-.2 6.4-27.5 6.4-28.4 0-.8-3.4.2-14.7 4m-32.2 47c-5.6 9.1-6.1 11.4-3.6 17.4.8 2 1.4 3.8 1.2 4s-1.8-.4-3.6-1.3c-3.6-1.8-9-1.3-12.8 1.2-1.3.8-3.5 2.2-4.9 3.1-2.6 1.7-2.6 1.6.5-2.8 4.3-6 5-10.8 2.2-15.4-1.1-2-2.1-3.8-2.1-4.1 0-.2 1.6.3 3.6 1.1s4.8 1.5 6.3 1.5c2.6 0 12.4-5 13.6-7 .3-.5.9-1 1.1-1 .3 0-.3 1.5-1.5 3.3"/><path d="M113.1 21.5c-14.9 4.2-30.3 16.5-37.3 30-5.3 10.1-7.1 17.4-7.1 28.5-.1 7.9.4 10.9 2.7 17.6C73 102 75 106.7 76 108l1.8 2.4 4.2-1.9c2.2-1 4.3-2.2 4.5-2.6.3-.4-.6-2.7-2-5.1-2.9-5.2-6.5-18.4-6.5-23.9 0-6.6 2.9-18.2 6.3-24.9 4.5-9 15.1-19.5 24.5-24.2 9.6-4.8 16.4-6.1 29.1-5.6 7.5.4 9.8.2 8-.5-4.3-1.7-26.7-1.9-32.8-.2"/><path d="M123 27.6c-10 2.1-18.3 6.9-25.9 15-7.8 8.1-12.7 18.3-13.6 28l-.5 5.9 1.8-6c4.2-13.8 12.6-24.1 24.6-30.1 11.8-5.8 25.5-6.6 37-2.3l4.9 1.8 4.3-3c2.4-1.6 4.4-3.4 4.4-3.8 0-1.3-9.6-4.9-15.9-6.1-7.1-1.3-13.2-1.2-21.1.6m50.8 23c-1.6 2.5-2.8 5-2.8 5.5s1.1 2.7 2.5 4.8c6.4 10.3 8.9 25.8 6 37.6-5.6 22.7-22.5 38.3-45.7 42.3-8.5 1.4-10.1 1.4-17.3 0-4.4-.8-8.1-1.4-8.3-1.3-.2.2 2.1 1.1 5 2.1 4.1 1.5 8.1 1.9 17.3 1.8 10.6 0 12.9-.4 19.5-2.9 13-4.8 22.2-11.7 29.4-21.9 14-19.9 14.4-46.2 1-67.4-1.9-2.8-3.5-5.2-3.6-5.2-.2 0-1.5 2.1-3 4.6"/><path d="M173.8 94.8c-3.7 12.6-14.1 23.9-27.1 29.5-6.6 2.9-8 3.2-18.2 3.1-9 0-12-.4-16.7-2.3-3.2-1.2-6.1-2.7-6.4-3.3-.4-.6.4-2 1.8-3.2 6.8-6 5.8-6.5-2.7-1.2-4.9 3.1-10 5.9-11.2 6.2-3 .8-2.9 1.6.4 4.1 10.8 7.9 27.3 11.6 40 8.9 21.1-4.4 36.9-19.7 41.3-39.7 1.7-7.8.9-9.2-1.2-2.1"/></svg>AURA CLUB</a>
+  <a href="#" class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 154" width="48" height="28" style="display:inline-block;vertical-align:middle;margin-right:0.6rem;" fill="#FAF7F2"><path d="M174.3 22.3c-6.7 2.3-12.5 4.5-12.8 4.9-.4.4 1.2 1.6 3.5 2.8l4.2 2.1-5.4 3.8C160.9 38 150.6 45.2 141 52s-18.9 13.3-20.6 14.6c-2.7 2-3.2 3.1-3.8 8.2-1 9.2-8.9 19.9-21.8 29.9-5.7 4.4-15.4 9.3-18.4 9.3-5.8 0-10.1-6.6-9.1-13.9l.5-3.6-1.5 3.5c-3.9 8.8-2.4 17.1 4 21.1 2.6 1.7 4.4 2 10.2 1.6 8.7-.5 18.4-5.2 32.5-15.7 12.1-9 20.1-13 26-13h4.5l11.4-19.3c6.3-10.5 13.7-22.9 16.4-27.5 2.7-4.5 5.1-8.2 5.3-8.2s1.6 1.8 3 4c1.5 2.2 2.8 3.9 3 3.7.3-.2 6.4-27.5 6.4-28.4 0-.8-3.4.2-14.7 4m-32.2 47c-5.6 9.1-6.1 11.4-3.6 17.4.8 2 1.4 3.8 1.2 4s-1.8-.4-3.6-1.3c-3.6-1.8-9-1.3-12.8 1.2-1.3.8-3.5 2.2-4.9 3.1-2.6 1.7-2.6 1.6.5-2.8 4.3-6 5-10.8 2.2-15.4-1.1-2-2.1-3.8-2.1-4.1 0-.2 1.6.3 3.6 1.1s4.8 1.5 6.3 1.5c2.6 0 12.4-5 13.6-7 .3-.5.9-1 1.1-1 .3 0-.3 1.5-1.5 3.3"/><path d="M113.1 21.5c-14.9 4.2-30.3 16.5-37.3 30-5.3 10.1-7.1 17.4-7.1 28.5-.1 7.9.4 10.9 2.7 17.6C73 102 75 106.7 76 108l1.8 2.4 4.2-1.9c2.2-1 4.3-2.2 4.5-2.6.3-.4-.6-2.7-2-5.1-2.9-5.2-6.5-18.4-6.5-23.9 0-6.6 2.9-18.2 6.3-24.9 4.5-9 15.1-19.5 24.5-24.2 9.6-4.8 16.4-6.1 29.1-5.6 7.5.4 9.8.2 8-.5-4.3-1.7-26.7-1.9-32.8-.2"/><path d="M123 27.6c-10 2.1-18.3 6.9-25.9 15-7.8 8.1-12.7 18.3-13.6 28l-.5 5.9 1.8-6c4.2-13.8 12.6-24.1 24.6-30.1 11.8-5.8 25.5-6.6 37-2.3l4.9 1.8 4.3-3c2.4-1.6 4.4-3.4 4.4-3.8 0-1.3-9.6-4.9-15.9-6.1-7.1-1.3-13.2-1.2-21.1.6m50.8 23c-1.6 2.5-2.8 5-2.8 5.5s1.1 2.7 2.5 4.8c6.4 10.3 8.9 25.8 6 37.6-5.6 22.7-22.5 38.3-45.7 42.3-8.5 1.4-10.1 1.4-17.3 0-4.4-.8-8.1-1.4-8.3-1.3-.2.2 2.1 1.1 5 2.1 4.1 1.5 8.1 1.9 17.3 1.8 10.6 0 12.9-.4 19.5-2.9 13-4.8 22.2-11.7 29.4-21.9 14-19.9 14.4-46.2 1-67.4-1.9-2.8-3.5-5.2-3.6-5.2-.2 0-1.5 2.1-3 4.6"/><path d="M173.8 94.8c-3.7 12.6-14.1 23.9-27.1 29.5-6.6 2.9-8 3.2-18.2 3.1-9 0-12-.4-16.7-2.3-3.2-1.2-6.1-2.7-6.4-3.3-.4-.6.4-2 1.8-3.2 6.8-6 5.8-6.5-2.7-1.2-4.9 3.1-10 5.9-11.2 6.2-3 .8-2.9 1.6.4 4.1 10.8 7.9 27.3 11.6 40 8.9 21.1-4.4 36.9-19.7 41.3-39.7 1.7-7.8.9-9.2-1.2-2.1"/></svg>
+    AURA CLUB
+  </a>
   <div class="nav-links">
     <a href="https://instagram.com/auraclub.ar" target="_blank" rel="noopener">@auraclub.ar</a>
     <a href="https://instagram.com/eltemplomdp" target="_blank" rel="noopener">El Templo</a>
-    <a href="/cdn-cgi/l/email-protection#1b5874756f7a786f74357e776f7e766b7774767f6b5b7c767a727735787476">Contacto</a>
+    <a href="mailto:contacto@auraclub.net">Contacto</a>
   </div>
   <a href="https://tally.so/r/pbLODV" target="_blank" rel="noopener" class="nav-cta"><span>Anotate al evento</span></a>
 </nav>
-
-<!-- ============================================
-     SECCIÓN 1 — HERO
-     ============================================ -->
+ 
 <section id="hero">
   <div class="hero-bg"></div>
-
   <div class="hero-content">
     <p class="hero-eyebrow">El Templo Calistenia presenta &nbsp;·&nbsp; 1ª Edición</p>
-
-    <!-- SVG Emblem -->
     <div class="hero-emblem">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 154" fill="#C4A235"><path d="M174.3 22.3c-6.7 2.3-12.5 4.5-12.8 4.9-.4.4 1.2 1.6 3.5 2.8l4.2 2.1-5.4 3.8C160.9 38 150.6 45.2 141 52s-18.9 13.3-20.6 14.6c-2.7 2-3.2 3.1-3.8 8.2-1 9.2-8.9 19.9-21.8 29.9-5.7 4.4-15.4 9.3-18.4 9.3-5.8 0-10.1-6.6-9.1-13.9l.5-3.6-1.5 3.5c-3.9 8.8-2.4 17.1 4 21.1 2.6 1.7 4.4 2 10.2 1.6 8.7-.5 18.4-5.2 32.5-15.7 12.1-9 20.1-13 26-13h4.5l11.4-19.3c6.3-10.5 13.7-22.9 16.4-27.5 2.7-4.5 5.1-8.2 5.3-8.2s1.6 1.8 3 4c1.5 2.2 2.8 3.9 3 3.7.3-.2 6.4-27.5 6.4-28.4 0-.8-3.4.2-14.7 4m-32.2 47c-5.6 9.1-6.1 11.4-3.6 17.4.8 2 1.4 3.8 1.2 4s-1.8-.4-3.6-1.3c-3.6-1.8-9-1.3-12.8 1.2-1.3.8-3.5 2.2-4.9 3.1-2.6 1.7-2.6 1.6.5-2.8 4.3-6 5-10.8 2.2-15.4-1.1-2-2.1-3.8-2.1-4.1 0-.2 1.6.3 3.6 1.1s4.8 1.5 6.3 1.5c2.6 0 12.4-5 13.6-7 .3-.5.9-1 1.1-1 .3 0-.3 1.5-1.5 3.3"/><path d="M113.1 21.5c-14.9 4.2-30.3 16.5-37.3 30-5.3 10.1-7.1 17.4-7.1 28.5-.1 7.9.4 10.9 2.7 17.6C73 102 75 106.7 76 108l1.8 2.4 4.2-1.9c2.2-1 4.3-2.2 4.5-2.6.3-.4-.6-2.7-2-5.1-2.9-5.2-6.5-18.4-6.5-23.9 0-6.6 2.9-18.2 6.3-24.9 4.5-9 15.1-19.5 24.5-24.2 9.6-4.8 16.4-6.1 29.1-5.6 7.5.4 9.8.2 8-.5-4.3-1.7-26.7-1.9-32.8-.2"/><path d="M123 27.6c-10 2.1-18.3 6.9-25.9 15-7.8 8.1-12.7 18.3-13.6 28l-.5 5.9 1.8-6c4.2-13.8 12.6-24.1 24.6-30.1 11.8-5.8 25.5-6.6 37-2.3l4.9 1.8 4.3-3c2.4-1.6 4.4-3.4 4.4-3.8 0-1.3-9.6-4.9-15.9-6.1-7.1-1.3-13.2-1.2-21.1.6m50.8 23c-1.6 2.5-2.8 5-2.8 5.5s1.1 2.7 2.5 4.8c6.4 10.3 8.9 25.8 6 37.6-5.6 22.7-22.5 38.3-45.7 42.3-8.5 1.4-10.1 1.4-17.3 0-4.4-.8-8.1-1.4-8.3-1.3-.2.2 2.1 1.1 5 2.1 4.1 1.5 8.1 1.9 17.3 1.8 10.6 0 12.9-.4 19.5-2.9 13-4.8 22.2-11.7 29.4-21.9 14-19.9 14.4-46.2 1-67.4-1.9-2.8-3.5-5.2-3.6-5.2-.2 0-1.5 2.1-3 4.6"/><path d="M173.8 94.8c-3.7 12.6-14.1 23.9-27.1 29.5-6.6 2.9-8 3.2-18.2 3.1-9 0-12-.4-16.7-2.3-3.2-1.2-6.1-2.7-6.4-3.3-.4-.6.4-2 1.8-3.2 6.8-6 5.8-6.5-2.7-1.2-4.9 3.1-10 5.9-11.2 6.2-3 .8-2.9 1.6.4 4.1 10.8 7.9 27.3 11.6 40 8.9 21.1-4.4 36.9-19.7 41.3-39.7 1.7-7.8.9-9.2-1.2-2.1"/></svg>
     </div>
-
     <h1 class="hero-title">AURA <span>CLUB</span></h1>
-
     <div class="hero-line"></div>
-
     <p class="hero-sub">Un día donde el cuerpo se mueve, la mente se expande y la comunidad se encuentra.</p>
-
     <p class="hero-location">29 de Marzo &nbsp;·&nbsp; Sierra de los Padres &nbsp;·&nbsp; Mar del Plata</p>
-
     <a href="https://tally.so/r/pbLODV" target="_blank" rel="noopener" class="hero-cta"><span>ANOTATE AL EVENTO</span></a>
   </div>
-
   <div class="scroll-indicator">
     <div class="scroll-line"></div>
     <span>Scroll</span>
   </div>
 </section>
-
-<!-- ============================================
-     SECCIÓN 2 — CONCEPTO
-     ============================================ -->
+ 
 <section id="concepto">
   <div class="section-inner">
-
     <div class="concepto-grid">
       <div class="concepto-visual reveal">
         <img src="https://res.cloudinary.com/dxrmweij8/image/upload/Gemini_Generated_Image_xbyut8xbyut8xbyu_fyesqr.png" alt="AURA CLUB evento" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div style="display:none">
-        </div>
       </div>
-
       <div class="concepto-text">
         <p class="eyebrow reveal">El Concepto</p>
         <h2 class="section-title reveal reveal-delay-1">NO VENÍS A UN EVENTO. ENTRÁS A UN CLUB.</h2>
         <p class="section-sub reveal reveal-delay-2">Un día diseñado para activar el cuerpo, nutrir la mente y encontrarte con personas que eligen lo mismo que vos.</p>
         <p class="section-body reveal reveal-delay-3">Calistenia, yoga, Wim Hof, nutrición, gastronomía, música y más — todo en un solo lugar, todo en un solo día. Cada edición es única. Cada edición deja marca.</p>
-
         <div class="concepto-pillars">
           <div class="pillar reveal reveal-delay-1">
-            <div class="pillar-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4.5 12.75l6 6 9-13.5"/>
-              </svg>
-            </div>
-            <div>
-              <p class="pillar-title">CUERPO</p>
-              <p class="pillar-desc">Running, calistenia, Wim Hof. Activá tu máximo potencial físico.</p>
-            </div>
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+            <div><p class="pillar-title">CUERPO</p><p class="pillar-desc">Running, calistenia, Wim Hof. Activá tu máximo potencial físico.</p></div>
           </div>
           <div class="pillar reveal reveal-delay-2">
-            <div class="pillar-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M12 8v4l3 3"/>
-              </svg>
-            </div>
-            <div>
-              <p class="pillar-title">MENTE</p>
-              <p class="pillar-desc">Yoga, respiración, charlas de nutrición. Conectá con vos mismo.</p>
-            </div>
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+            <div><p class="pillar-title">MENTE</p><p class="pillar-desc">Yoga, respiración, charlas de nutrición. Conectá con vos mismo.</p></div>
           </div>
           <div class="pillar reveal reveal-delay-3">
-            <div class="pillar-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857"/>
-                <path d="M9 20H4v-2a3 3 0 015.356-1.857"/>
-                <circle cx="12" cy="7" r="4"/>
-                <path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
-              </svg>
-            </div>
-            <div>
-              <p class="pillar-title">COMUNIDAD</p>
-              <p class="pillar-desc">Gastronomía, música, marcas premium. Compartí con los tuyos.</p>
-            </div>
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg></div>
+            <div><p class="pillar-title">COMUNIDAD</p><p class="pillar-desc">Gastronomía, música, marcas premium. Compartí con los tuyos.</p></div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
-
+ 
 <div class="gold-line"></div>
-
-<!-- ============================================
-     SECCIÓN 3 — EXPERIENCIA
-     ============================================ -->
+ 
 <section id="experiencia">
   <div class="section-inner">
-
     <div class="experiencia-header">
       <p class="eyebrow reveal">La Experiencia</p>
       <h2 class="section-title reveal reveal-delay-1">UN DÍA, CINCO MOMENTOS</h2>
       <p class="section-sub reveal reveal-delay-2">De la apertura al clímax. Un arco completo.</p>
     </div>
-
     <div class="timeline">
-
       <div class="timeline-item reveal">
-        <div class="timeline-marker">
-          <div class="timeline-dot"></div>
-          <span class="timeline-num">I</span>
-        </div>
-        <div class="timeline-content">
-          <p class="timeline-label">Apertura</p>
-          <p class="timeline-subtitle">El portal de entrada</p>
-          <p class="timeline-desc">Llegás y entendés que esto no es un evento más. El espacio, la energía, el detalle de cada rincón te dice: acá pasan cosas distintas.</p>
-        </div>
+        <div class="timeline-marker"><div class="timeline-dot"></div><span class="timeline-num">I</span></div>
+        <div class="timeline-content"><p class="timeline-label">Apertura</p><p class="timeline-subtitle">El portal de entrada</p><p class="timeline-desc">Llegás y entendés que esto no es un evento más. El espacio, la energía, el detalle de cada rincón te dice: acá pasan cosas distintas.</p></div>
       </div>
-
       <div class="timeline-item reveal reveal-delay-1">
-        <div class="timeline-marker">
-          <div class="timeline-dot"></div>
-          <span class="timeline-num">II</span>
-        </div>
-        <div class="timeline-content">
-          <p class="timeline-label">Acto I · Activación</p>
-          <p class="timeline-subtitle">Despertá el cuerpo</p>
-          <p class="timeline-desc">Calistenia, running, método Wim Hof, masterclass de handstand. Alta intensidad, método real, la forma en que El Templo entiende el movimiento.</p>
-        </div>
+        <div class="timeline-marker"><div class="timeline-dot"></div><span class="timeline-num">II</span></div>
+        <div class="timeline-content"><p class="timeline-label">Acto I · Activación</p><p class="timeline-subtitle">Despertá el cuerpo</p><p class="timeline-desc">Calistenia, running, método Wim Hof, masterclass de handstand. Alta intensidad, método real, la forma en que El Templo entiende el movimiento.</p></div>
       </div>
-
       <div class="timeline-item reveal reveal-delay-2">
-        <div class="timeline-marker">
-          <div class="timeline-dot"></div>
-          <span class="timeline-num">III</span>
-        </div>
-        <div class="timeline-content">
-          <p class="timeline-label">Acto II · Inmersión</p>
-          <p class="timeline-subtitle">Conectá con el silencio</p>
-          <p class="timeline-desc">Yoga, masajes en vivo, charlas de nutrición. El momento donde bajás la velocidad y subís la conciencia.</p>
-        </div>
+        <div class="timeline-marker"><div class="timeline-dot"></div><span class="timeline-num">III</span></div>
+        <div class="timeline-content"><p class="timeline-label">Acto II · Inmersión</p><p class="timeline-subtitle">Conectá con el silencio</p><p class="timeline-desc">Yoga, masajes en vivo, charlas de nutrición. El momento donde bajás la velocidad y subís la conciencia.</p></div>
       </div>
-
       <div class="timeline-item reveal reveal-delay-3">
-        <div class="timeline-marker">
-          <div class="timeline-dot"></div>
-          <span class="timeline-num">IV</span>
-        </div>
-        <div class="timeline-content">
-          <p class="timeline-label">Acto III · Comunidad</p>
-          <p class="timeline-subtitle">El encuentro</p>
-          <p class="timeline-desc">Gastronomía keto, marcas wellness, suplementación natural, conversación real. El espacio entre actividades es donde nacen las conexiones.</p>
-        </div>
+        <div class="timeline-marker"><div class="timeline-dot"></div><span class="timeline-num">IV</span></div>
+        <div class="timeline-content"><p class="timeline-label">Acto III · Comunidad</p><p class="timeline-subtitle">El encuentro</p><p class="timeline-desc">Gastronomía keto, marcas wellness, suplementación natural, conversación real. El espacio entre actividades es donde nacen las conexiones.</p></div>
       </div>
-
       <div class="timeline-item reveal reveal-delay-4">
-        <div class="timeline-marker">
-          <div class="timeline-dot"></div>
-          <span class="timeline-num">V</span>
-        </div>
-        <div class="timeline-content">
-          <p class="timeline-label">Clímax</p>
-          <p class="timeline-subtitle">Lo que no esperabas</p>
-          <p class="timeline-desc">Coffee rave. Pool party. Música electrónica. Y algo más que todavía no podemos contarte. Solo esto: el final es el comienzo.</p>
-        </div>
+        <div class="timeline-marker"><div class="timeline-dot"></div><span class="timeline-num">V</span></div>
+        <div class="timeline-content"><p class="timeline-label">Clímax</p><p class="timeline-subtitle">Lo que no esperabas</p><p class="timeline-desc">Coffee rave. Pool party. Música electrónica. Y algo más que todavía no podemos contarte. Solo esto: el final es el comienzo.</p></div>
       </div>
-
     </div>
-
   </div>
 </section>
-
+ 
 <div class="gold-line"></div>
-
-<!-- ============================================
-     SECCIÓN 4 — EL LUGAR
-     ============================================ -->
+ 
 <section id="lugar">
   <div class="section-inner">
-
     <div class="lugar-grid">
       <div class="lugar-visual reveal">
         <div class="lugar-video-wrap">
-          <video
-            src="https://res.cloudinary.com/dxrmweij8/video/upload/IMG_4155_jear2o.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-            controls
-            style="width:100%;height:100%;object-fit:cover;display:block;">
-          </video>
+          <video src="https://res.cloudinary.com/dxrmweij8/video/upload/IMG_4155_jear2o.mp4" autoplay muted loop playsinline controls style="width:100%;height:100%;object-fit:cover;display:block;"></video>
         </div>
       </div>
-
       <div class="lugar-text">
         <p class="eyebrow reveal">El Escenario</p>
         <h2 class="section-title reveal reveal-delay-1">LA CASUALIDAD, SIERRA DE LOS PADRES</h2>
@@ -1603,47 +341,28 @@ footer::before {
         <p class="lugar-tag reveal reveal-delay-4">29 de Marzo 2026 &nbsp;·&nbsp; Sierra de los Padres · Mar del Plata<br>A 20 minutos del centro</p>
         <div class="lugar-map reveal reveal-delay-5">
           <a href="https://maps.app.goo.gl/z5vnEJAiNpKCF3517" target="_blank" rel="noopener" class="lugar-map-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
             La Casualidad · Sierra de los Padres
             <span>Ver en Google Maps →</span>
           </a>
         </div>
       </div>
     </div>
-
   </div>
 </section>
-
-<!-- ============================================
-     SECCIÓN 5 — RESPALDO
-     ============================================ -->
+ 
 <section id="respaldo">
   <div class="section-inner">
     <div class="respaldo-inner">
       <p class="eyebrow eyebrow--gold reveal">Quién está detrás</p>
       <h2 class="section-title section-title--light reveal reveal-delay-1">EL TEMPLO CALISTENIA</h2>
       <p class="section-sub reveal reveal-delay-2">La comunidad real detrás del evento.</p>
-
       <div class="stats-row">
-        <div class="stat-item reveal">
-          <span class="stat-number" data-target="7">0</span>
-          <span class="stat-label">Sedes</span>
-        </div>
-        <div class="stat-item reveal reveal-delay-1">
-          <span class="stat-number" data-target="2">0</span>
-          <span class="stat-label">Países</span>
-        </div>
-        <div class="stat-item reveal reveal-delay-2">
-          <span class="stat-number" data-suffix="K" data-target="40">0</span>
-          <span class="stat-label">Comunidad</span>
-        </div>
+        <div class="stat-item reveal"><span class="stat-number" data-target="7">0</span><span class="stat-label">Sedes</span></div>
+        <div class="stat-item reveal reveal-delay-1"><span class="stat-number" data-target="2">0</span><span class="stat-label">Países</span></div>
+        <div class="stat-item reveal reveal-delay-2"><span class="stat-number" data-suffix="K" data-target="40">0</span><span class="stat-label">Comunidad</span></div>
       </div>
-
       <p class="respaldo-body reveal">Aura Club es la experiencia física de un ecosistema que lleva años construyendo algo distinto. No improvisamos — creamos.</p>
-
       <div class="templo-badge reveal reveal-delay-1">
         <span>EL TEMPLO</span>
         <a href="https://instagram.com/eltemplomdp" target="_blank" rel="noopener">@eltemplomdp →</a>
@@ -1651,103 +370,65 @@ footer::before {
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     SECCIÓN 6 — REGISTRO
-     ============================================ -->
+ 
 <section id="registro">
   <div class="section-inner">
     <div class="registro-inner">
       <p class="eyebrow reveal">Comunidad</p>
       <h2 class="section-title reveal reveal-delay-1">UNITE.<br>SUBÍ TU AURA.</h2>
       <p class="section-sub reveal reveal-delay-2">Eventos · Beneficios exclusivos · Comunidad real</p>
-
       <form id="waitlist-form" class="reveal reveal-delay-3">
-        <div class="form-group">
-          <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellido" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder="Mail" required autocomplete="email">
-        </div>
-        <div class="form-group">
-          <input type="tel" id="telefono" name="telefono" placeholder="Número de teléfono" required autocomplete="tel">
-        </div>
-        <div class="form-group">
-          <input type="text" id="dni" name="dni" placeholder="DNI" required>
-        </div>
+        <div class="form-group"><input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellido" required autocomplete="name"></div>
+        <div class="form-group"><input type="email" id="email" name="email" placeholder="Mail" required autocomplete="email"></div>
+        <div class="form-group"><input type="tel" id="telefono" name="telefono" placeholder="Número de teléfono" required autocomplete="tel"></div>
+        <div class="form-group"><input type="text" id="dni" name="dni" placeholder="DNI" required></div>
         <button type="submit" class="form-submit">QUIERO SER PARTE</button>
         <p class="form-micro">Sumate a la comunidad para enterarte de eventos, conseguir beneficios exclusivos y subir tu aura.</p>
       </form>
-
       <div class="form-success" id="form-success">
         <p class="success-title">ESTÁS DENTRO</p>
         <p>Listo. Estás en la lista. Te vamos a avisar antes que a nadie cuando se abran los tickets.</p>
       </div>
-
     </div>
   </div>
 </section>
-
-<!-- ============================================
-     FOOTER
-     ============================================ -->
+ 
 <footer>
   <div class="footer-logo">AURA CLUB</div>
   <div class="footer-tagline">Paso a paso, piedra por piedra.</div>
-
   <div class="footer-links">
     <a href="https://instagram.com/auraclub.ar" target="_blank" rel="noopener">@auraclub.ar</a>
     <a href="https://instagram.com/eltemplomdp" target="_blank" rel="noopener">El Templo</a>
-    <a href="/cdn-cgi/l/email-protection#a8ebc7c6dcc9cbdcc786cdc4dccdc5d8c4c7c5ccd8e8cfc5c9c1c486cbc7c5">Contacto</a>
+    <a href="mailto:contacto@auraclub.net">Contacto</a>
   </div>
-
   <div class="footer-sep"></div>
-
   <p class="footer-legal">AURA CLUB by El Templo Calistenia &nbsp;·&nbsp; MMXXVI &nbsp;·&nbsp; Mar del Plata, Argentina</p>
 </footer>
-
-<!-- ============================================
-     JAVASCRIPT
-     ============================================ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// --- NAV scroll behavior ---
+ 
+<script>
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-// --- Scroll reveal ---
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+ 
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
 revealEls.forEach(el => revealObserver.observe(el));
-
-// --- Counter animation ---
+ 
 function animateCounter(el) {
   const target = parseInt(el.getAttribute('data-target'));
   const suffix = el.getAttribute('data-suffix') || '';
   const duration = 1800;
   const start = performance.now();
-
   function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    // Ease out
+    const progress = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.floor(eased * target);
-    el.textContent = current + suffix;
+    el.textContent = Math.floor(eased * target) + suffix;
     if (progress < 1) requestAnimationFrame(update);
     else el.textContent = target + suffix;
   }
   requestAnimationFrame(update);
 }
-
 const statNumbers = document.querySelectorAll('.stat-number[data-target]');
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1757,44 +438,36 @@ const counterObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.5 });
-
 statNumbers.forEach(el => counterObserver.observe(el));
-
-// --- Form: Google Sheets + WhatsApp ---
+ 
 document.getElementById('waitlist-form').addEventListener('submit', function(e) {
   e.preventDefault();
-
   const nombre = document.getElementById('nombre').value.trim();
   const email = document.getElementById('email').value.trim();
   const telefono = document.getElementById('telefono').value.trim();
   const dni = document.getElementById('dni').value.trim();
-
-  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycby7Gm1MfHk_T4bOks74tqyChTpfs8cI0wSNnEPjhtScqzMU8cD26ddSm-v-3juHi405rg/exec';
-
-  // 1. Guardar en Google Sheets
-  fetch(SHEETS_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
+ 
+  fetch('https://script.google.com/macros/s/AKfycby7Gm1MfHk_T4bOks74tqyChTpfs8cI0wSNnEPjhtScqzMU8cD26ddSm-v-3juHi405rg/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ nombre, email, telefono, dni })
   }).catch(function() {});
-
-  // 2. Abrir WhatsApp con datos pre-cargados
-  const mensaje = 'Hola! Me quiero registrar para AURA CLUB ' + String.fromCodePoint(0x1F31F) + '\n\n*Nombre:* ' + nombre + '\n*Email:* ' + email + '\n*Tel\u00e9fono:* ' + telefono + '\n*DNI:* ' + dni + '\n\nQuiero acceso early bird para la primera edici\u00f3n en Mar del Plata.';
-  const whatsappNumber = '5492236974897';
-  const whatsappURL = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(mensaje);
-
-  window.open(whatsappURL, '_blank');
-
-  // 3. Mostrar mensaje de éxito
+ 
+  const mensaje = 'Hola! Me quiero registrar para AURA CLUB\n\n*Nombre:* ' + nombre + '\n*Email:* ' + email + '\n*Teléfono:* ' + telefono + '\n*DNI:* ' + dni + '\n\nQuiero acceso early bird para la primera edición en Mar del Plata.';
+  window.open('https://wa.me/5492236974897?text=' + encodeURIComponent(mensaje), '_blank');
+ 
   document.getElementById('waitlist-form').style.display = 'none';
   document.getElementById('form-success').style.display = 'block';
 });
-
-// --- Smooth anchor scroll ---
+ 
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
   anchor.addEventListener('click', function(e) {
     var href = this.getAttribute('href');
     if (href === '#') return;
     var target = document.getElementById(href.substring(1));
-    if (target
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
+ 
